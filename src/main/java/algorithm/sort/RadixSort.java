@@ -13,6 +13,10 @@ import java.util.stream.Collectors;
  * 平均情况：T(n) = O(n * k)
  * k为最大数字的位数
  * 空间复杂度O(n+k)
+ * 稳定
+ * 外排序
+ * 思想：
+ * 取得列表内最大的元素，取得其位数。按照低位进行排序，收集，再按高位排序，收集，重复操作。
  */
 public class RadixSort implements Sort {
 

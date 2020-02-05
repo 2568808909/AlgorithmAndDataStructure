@@ -6,6 +6,15 @@ import java.util.List;
 
 /**
  * 快速排序
+ * 最佳情况：T(n) = O(nlogn)
+ * 最差情况：T(n) = O(n^2)
+ * 平均情况：T(n) = O(nlogn)
+ * 空间复杂度：O(1)
+ * 内排序
+ * 不稳定
+ * 思想：
+ * 选择一个数作为基数，将列表中比这个基数大的元素放在其左边，比这个元素大的放在其右边(增序)。
+ * 然后继续对左右两部分数据进行上述操作。
  */
 public class QuickSort implements Sort {
 

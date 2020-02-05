@@ -7,6 +7,16 @@ import java.util.List;
 
 /**
  * 堆排序
+ * 最佳情况：T(n) = O(nlogn)
+ * 最差情况：T(n) = O(nlogn)
+ * 平均情况：T(n) = O(nlogn)
+ * 空间复杂度：O(1)
+ * 内排序
+ * 稳定
+ * 思想：
+ * 使用传进来的列表建立小/大根堆，然后依次从堆中取出元素。
+ * 建堆过程：上浮--将大的元素上浮(如果有子元素比自己小/大，则选择最小/大的记性交换)
+ * 取出元素时将最后一个元素与第一个元素交换，进行下沉操作(比较子元素，与最小/大的子元素进行交换)。
  */
 public class HeapSort implements Sort {
 
@@ -58,7 +68,7 @@ public class HeapSort implements Sort {
         if (left < len && CommonUtils.compare(list.get(left), list.get(index), desc)) {
             index = left;
         }
-        if (right < len && (CommonUtils.compare(list.get(right), list.get(index), desc))) {
+        if (right < len && CommonUtils.compare(list.get(right), list.get(index), desc)) {
             index = right;
         }
         if (index != i) {

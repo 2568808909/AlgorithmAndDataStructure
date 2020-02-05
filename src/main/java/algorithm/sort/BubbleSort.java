@@ -10,7 +10,10 @@ import java.util.List;
  * 最差情况：T(n) = O(n^2)
  * 平均情况：T(n) = O(n^2)
  * 空间复杂度：O(1)
+ * 内排序
  * 稳定
+ * 思想：
+ * 取出一个元素，不断向后比较，不符合排序规则就交换，
  */
 public class BubbleSort implements Sort {
 
