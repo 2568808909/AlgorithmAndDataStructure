@@ -12,12 +12,12 @@ import java.util.Stack;
 public class BinarySearchTree<T extends Comparable> {
 
     protected class BSTNode {
-        protected T data;
-        protected BSTNode left;
-        protected BSTNode right;
-        protected boolean console;
+        private T data;
+        private BSTNode left;
+        private BSTNode right;
+        private boolean console;
 
-        protected BSTNode(T data) {
+        private BSTNode(T data) {
             this.data = data;
             this.left = null;
             this.right = null;
@@ -25,8 +25,8 @@ public class BinarySearchTree<T extends Comparable> {
         }
     }
 
-    protected BSTNode root;
-    protected int size;
+    private BSTNode root;
+    private int size;
 
     public BinarySearchTree() {
         this.root = null;
