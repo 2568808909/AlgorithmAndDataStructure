@@ -12,7 +12,7 @@ public class Test {
         tree.add(7);
 
         tree.preOrderNR();
-        tree.remove(3);
+        tree.remove(9);
         System.out.println();
         tree.preOrderNR();
     }

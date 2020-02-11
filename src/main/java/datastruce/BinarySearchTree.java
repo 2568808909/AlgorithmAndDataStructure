@@ -11,13 +11,13 @@ import java.util.Stack;
  */
 public class BinarySearchTree<T extends Comparable> {
 
-    private class BSTNode {
-        private T data;
-        private BSTNode left;
-        private BSTNode right;
-        private boolean console;
+    protected class BSTNode {
+        protected T data;
+        protected BSTNode left;
+        protected BSTNode right;
+        protected boolean console;
 
-        private BSTNode(T data) {
+        protected BSTNode(T data) {
             this.data = data;
             this.left = null;
             this.right = null;
@@ -25,8 +25,8 @@ public class BinarySearchTree<T extends Comparable> {
         }
     }
 
-    private BSTNode root;
-    private int size;
+    protected BSTNode root;
+    protected int size;
 
     public BinarySearchTree() {
         this.root = null;
@@ -80,8 +80,8 @@ public class BinarySearchTree<T extends Comparable> {
      * @param data 待查询元素
      * @return 存在则返回true，否则为false
      */
-    public boolean contain(T data) {
-        return contain(root, data);
+    public boolean contains(T data) {
+        return contains(root, data);
     }
 
     /**
@@ -91,15 +91,15 @@ public class BinarySearchTree<T extends Comparable> {
      * @param data    元素
      * @return 存在则返回true，否则为false
      */
-    private boolean contain(BSTNode bstNode, T data) {
+    private boolean contains(BSTNode bstNode, T data) {
         if (bstNode == null) {
             return false;
         }
         T current = bstNode.data;
         if (data.compareTo(current) < 0) {
-            return contain(bstNode.left, data);
+            return contains(bstNode.left, data);
         } else if (data.compareTo(current) > 0) {
-            return contain(bstNode.right, data);
+            return contains(bstNode.right, data);
         } else {
             return true;
         }
@@ -233,6 +233,9 @@ public class BinarySearchTree<T extends Comparable> {
      * @return 二叉树中最小值
      */
     public T minimum() {
+        if (size == 0) {
+            throw new RuntimeException("树中元素个数为0，没有最小值");
+        }
         return minimum(root);
     }
 
@@ -249,6 +252,9 @@ public class BinarySearchTree<T extends Comparable> {
      * @return 二叉树中最大值
      */
     public T maximum() {
+        if (size == 0) {
+            throw new RuntimeException("树中元素个数为0，没有最大值");
+        }
         return maximum(root);
     }
 
@@ -263,11 +269,15 @@ public class BinarySearchTree<T extends Comparable> {
      * 删除最小值
      */
     public void removeMinimum() {
+        if (size == 0) {
+            throw new RuntimeException("树中元素个数为0，没有可删除的元素");
+        }
         root = removeMinimum(root);
     }
 
     /**
      * 删除某子树下的最小值
+     *
      * @param bstNode 子树
      * @return 返回删除最小值后的子树
      */
@@ -284,11 +294,15 @@ public class BinarySearchTree<T extends Comparable> {
      * 删除最大值
      */
     public void removeMaximum() {
+        if (size == 0) {
+            throw new RuntimeException("树中元素个数为0，没有可删除的元素");
+        }
         root = removeMaximum(root);
     }
 
     /**
      * 删除某子树的最大值
+     *
      * @param bstNode 子树
      * @return 删除最大值后的子树
      */
@@ -303,9 +317,13 @@ public class BinarySearchTree<T extends Comparable> {
 
     /**
      * 删除某一个节点
+     *
      * @param data 待删除元素
      */
     public void remove(T data) {
+        if (size == 0) {
+            throw new RuntimeException("树中元素个数为0，没有可删除的元素");
+        }
         root = remove(root, data);
     }
 
@@ -313,11 +331,12 @@ public class BinarySearchTree<T extends Comparable> {
      * 删除某个节点下的某个元素
      * 删除只有右子树的节点，只需要让父节点指向自己的右子树
      * 删除只有做直属的节点，只需要让父节点指向自己的左子树
-     *
+     * <p>
      * 删除左右子树都有的节点，要寻找一个与自己值临近的节点代替自己
      * 也就是用右子树的最小值代替该节点，然后删除右子树最小值
+     *
      * @param bstNode 节点
-     * @param data 待删除元素
+     * @param data    待删除元素
      * @return 返回删除元素后的节点
      */
     private BSTNode remove(BSTNode bstNode, T data) {
@@ -338,6 +357,7 @@ public class BinarySearchTree<T extends Comparable> {
             } else {
                 bstNode = bstNode.right;
             }
+            size--;
         }
         return bstNode;
     }
