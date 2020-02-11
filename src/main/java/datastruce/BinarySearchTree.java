@@ -259,10 +259,18 @@ public class BinarySearchTree<T extends Comparable> {
         return maximum(bstNode.right);
     }
 
+    /**
+     * 删除最小值
+     */
     public void removeMinimum() {
         root = removeMinimum(root);
     }
 
+    /**
+     * 删除某子树下的最小值
+     * @param bstNode 子树
+     * @return 返回删除最小值后的子树
+     */
     private BSTNode removeMinimum(BSTNode bstNode) {
         if (bstNode.left == null) {
             size--;
@@ -272,10 +280,18 @@ public class BinarySearchTree<T extends Comparable> {
         return bstNode;
     }
 
+    /**
+     * 删除最大值
+     */
     public void removeMaximum() {
         root = removeMaximum(root);
     }
 
+    /**
+     * 删除某子树的最大值
+     * @param bstNode 子树
+     * @return 删除最大值后的子树
+     */
     private BSTNode removeMaximum(BSTNode bstNode) {
         if (bstNode.right == null) {
             size--;
