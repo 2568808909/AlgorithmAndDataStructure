@@ -11,8 +11,9 @@ public class Test {
         tree.add(8);
         tree.add(7);
 
-        tree.lastOrder();
+        tree.preOrderNR();
+        tree.remove(3);
         System.out.println();
-        tree.lastOrder();
+        tree.preOrderNR();
     }
 }

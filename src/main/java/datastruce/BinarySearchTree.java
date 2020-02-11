@@ -4,6 +4,11 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
+/**
+ * 二分搜素树(非平衡)
+ *
+ * @param <T>
+ */
 public class BinarySearchTree<T extends Comparable> {
 
     private class BSTNode {
@@ -196,7 +201,6 @@ public class BinarySearchTree<T extends Comparable> {
         stack.push(root);
         while (!stack.empty()) {
             BSTNode current = stack.peek();
-            //由于栈先进后出，所以先将右子树压入栈，再讲左子树压入栈
             if (current.left != null && !current.left.console) {
                 stack.push(current.left);
             } else if (current.right != null && !current.right.console) {
@@ -221,6 +225,105 @@ public class BinarySearchTree<T extends Comparable> {
             if (current.left != null) queue.offer(current.left);
             if (current.right != null) queue.offer(current.right);
         }
+    }
+
+    /**
+     * 返回二叉树中最小值
+     *
+     * @return 二叉树中最小值
+     */
+    public T minimum() {
+        return minimum(root);
+    }
+
+    private T minimum(BSTNode bstNode) {
+        if (bstNode.left == null) {
+            return bstNode.data;
+        }
+        return minimum(bstNode.left);
+    }
+
+    /**
+     * 返回二叉树最大值
+     *
+     * @return 二叉树中最大值
+     */
+    public T maximum() {
+        return maximum(root);
+    }
+
+    public T maximum(BSTNode bstNode) {
+        if (bstNode.right == null) {
+            return bstNode.data;
+        }
+        return maximum(bstNode.right);
+    }
+
+    public void removeMinimum() {
+        root = removeMinimum(root);
+    }
+
+    private BSTNode removeMinimum(BSTNode bstNode) {
+        if (bstNode.left == null) {
+            size--;
+            return bstNode.right;
+        }
+        bstNode.left = removeMinimum(bstNode.left);
+        return bstNode;
+    }
+
+    public void removeMaximum() {
+        root = removeMaximum(root);
+    }
+
+    private BSTNode removeMaximum(BSTNode bstNode) {
+        if (bstNode.right == null) {
+            size--;
+            return bstNode.left;
+        }
+        bstNode.right = removeMaximum(bstNode.right);
+        return bstNode;
+    }
+
+    /**
+     * 删除某一个节点
+     * @param data 待删除元素
+     */
+    public void remove(T data) {
+        root = remove(root, data);
+    }
+
+    /**
+     * 删除某个节点下的某个元素
+     * 删除只有右子树的节点，只需要让父节点指向自己的右子树
+     * 删除只有做直属的节点，只需要让父节点指向自己的左子树
+     *
+     * 删除左右子树都有的节点，要寻找一个与自己值临近的节点代替自己
+     * 也就是用右子树的最小值代替该节点，然后删除右子树最小值
+     * @param bstNode 节点
+     * @param data 待删除元素
+     * @return 返回删除元素后的节点
+     */
+    private BSTNode remove(BSTNode bstNode, T data) {
+        if (bstNode == null) {
+            throw new RuntimeException("删除失败，无此元素");
+        }
+        T current = bstNode.data;
+        if (data.compareTo(current) < 0) {
+            bstNode.left = remove(bstNode.left, data);
+        } else if (data.compareTo(current) > 0) {
+            bstNode.right = remove(bstNode.right, data);
+        } else {
+            if (bstNode.left != null && bstNode.right != null) {
+                bstNode.data = minimum(bstNode.right);
+                bstNode.right = removeMinimum(bstNode.right);
+            } else if (bstNode.left != null) {
+                bstNode = bstNode.left;
+            } else {
+                bstNode = bstNode.right;
+            }
+        }
+        return bstNode;
     }
 
 }
