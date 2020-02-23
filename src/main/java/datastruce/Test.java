@@ -13,6 +13,10 @@ public class Test {
         tree.add(2,1);
 
         System.out.println(tree.isBalance());
+        tree.remove(2);
+        tree.add(4,1);
+        tree.remove(7);
+        System.out.println(tree.isBalance());
         System.out.println(tree.isBST());
     }
 }
