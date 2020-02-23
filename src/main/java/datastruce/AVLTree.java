@@ -73,6 +73,11 @@ public class AVLTree<K extends Comparable<K>, V> {
         return node == null ? 0 : getHeight(node.left) - getHeight(node.right);
     }
 
+    /**
+     * 左旋转
+     * @param node
+     * @return
+     */
     private Node leftRotate(Node node) {
         Node result = node.right;
         Node lLeft = result.left;
@@ -85,6 +90,11 @@ public class AVLTree<K extends Comparable<K>, V> {
         return result;
     }
 
+    /**
+     * 右旋转
+     * @param node
+     * @return
+     */
     private Node rightRotate(Node node) {
         Node result = node.left;
         Node rRight = result.right;
@@ -275,6 +285,11 @@ public class AVLTree<K extends Comparable<K>, V> {
         return maximum(node.right);
     }
 
+    /**
+     * 新增/删除一个节点后执行的再平衡操作
+     * @param node 需平衡的子树
+     * @return 平衡后的子树
+     */
     private Node reBalance(Node node) {
         if (node == null) {
             return null;
