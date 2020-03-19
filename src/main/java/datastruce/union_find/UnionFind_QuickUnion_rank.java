@@ -1,5 +1,10 @@
 package datastruce.union_find;
 
+/**
+ * rank优化
+ *
+ * 维护每棵树的高度，合并时，将高度较小的结合指向高度较高的
+ */
 public class UnionFind_QuickUnion_rank implements UF {
     private int[] parent;
     private int[] rank;
