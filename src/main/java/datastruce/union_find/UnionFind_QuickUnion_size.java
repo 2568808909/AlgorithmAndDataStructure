@@ -1,7 +1,7 @@
 package datastruce.union_find;
 
 /**
- * 基于size的优化
+ * size的优化
  *
  * 对于之前的QuickUnion有一个问题，在极端环境下，我们按顺序进行union操作，就可能形成一条比较长的链，
  * 这样，在执行find操作时就比较慢，所以在这里实现了一种优化方案：维护一个sz数组，数组存储的是，
