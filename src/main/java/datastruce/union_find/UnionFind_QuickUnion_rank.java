@@ -3,7 +3,7 @@ package datastruce.union_find;
 /**
  * rank优化
  *
- * 维护每棵树的高度，合并时，将高度较小的结合指向高度较高的
+ * 维护每棵树的高度（可以如此理解，但是实际上rank并不一定代表树的高度，这点可以参考路径压缩），合并时，将高度较小的结合指向高度较高的
  */
 public class UnionFind_QuickUnion_rank implements UF {
     private int[] parent;
