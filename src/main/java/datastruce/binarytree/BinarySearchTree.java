@@ -1,4 +1,4 @@
-package datastruce;
+package datastruce.binarytree;
 
 import java.util.LinkedList;
 import java.util.Queue;
