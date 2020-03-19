@@ -2,6 +2,7 @@ package datastruce.union_find;
 
 /**
  * 并查集接口，主要支持两个元素union和isConnected
+ * 经过一系列优化后，并查集的查询和连接复杂度大约是log*n（比O(logn)低，但比O(1)大）
  */
 public interface UF {
 
