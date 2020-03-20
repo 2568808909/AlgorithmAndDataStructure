@@ -21,6 +21,12 @@ public class CommonUtils {
         list.set(j, o);
     }
 
+    public static void swap(datastruce.list.List list, int i, int j) {
+        Object o = list.get(i);
+        list.set(i, list.get(j));
+        list.set(j, o);
+    }
+
     /**
      * 将数组转为列表
      * @param array 数组
