@@ -47,6 +47,7 @@ public class KnapsackPAS {
             for (int i = 1; i < opt.length; i++) {
                 for (int j = 1; j < opt[i].length; j++) {
                     opt[i][j] = opt[i - 1][j]; //不选
+                    //在选择了第i个物品的情况下继续将第i个物品加入到背包中，所以这不需要i-1
                     if (j >= w[i]) opt[i][j] = Math.max(opt[i][j], opt[i][j - w[i]] + v[i]);
                 }
             }
