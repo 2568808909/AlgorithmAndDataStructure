@@ -29,8 +29,35 @@ public class KnapsackPAS {
 //        }
 //    }
 
+//    /**
+//     * 对以上解放优化了一下
+//     *
+//     * @param args
+//     */
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//        while (scanner.hasNext()) {
+//            int n = scanner.nextInt();
+//            int W = scanner.nextInt();
+//            int[] v = new int[n + 1], w = new int[n + 1];
+//            for (int i = 1; i <= n; i++) {
+//                w[i] = scanner.nextInt();
+//                v[i] = scanner.nextInt();
+//            }
+//            int[][] opt = new int[n + 1][W + 1];
+//            for (int i = 1; i <= n; i++) {
+//                for (int j = 1; j <= W; j++) {
+//                    opt[i][j] = opt[i - 1][j]; //不选
+//                    //在选择了第i个物品的情况下继续将第i个物品加入到背包中，所以这不需要i-1
+//                    if (j >= w[i]) opt[i][j] = Math.max(opt[i][j], opt[i][j - w[i]] + v[i]);
+//                }
+//            }
+//            System.out.println(opt[n][W]);
+//        }
+//    }
+
     /**
-     * 对以上解放优化了一下
+     * 一维
      * @param args
      */
     public static void main(String[] args) {
@@ -43,15 +70,13 @@ public class KnapsackPAS {
                 w[i] = scanner.nextInt();
                 v[i] = scanner.nextInt();
             }
-            int[][] opt = new int[n + 1][W + 1];
-            for (int i = 1; i < opt.length; i++) {
-                for (int j = 1; j < opt[i].length; j++) {
-                    opt[i][j] = opt[i - 1][j]; //不选
-                    //在选择了第i个物品的情况下继续将第i个物品加入到背包中，所以这不需要i-1
-                    if (j >= w[i]) opt[i][j] = Math.max(opt[i][j], opt[i][j - w[i]] + v[i]);
+            int[] opt = new int[W + 1];
+            for (int i = 1; i <= n; i++) {
+                for (int j = w[i]; j <=W; j++) { //完全背包正序循环，完全背包关注的是当前i的状态，与i-1并无非常大的联系，所以可以使用顺序更新
+                    opt[j] = Math.max(opt[j], opt[j - w[i]] + v[i]);
                 }
             }
-            System.out.println(opt[n][W]);
+            System.out.println(opt[W]);
         }
     }
 }
