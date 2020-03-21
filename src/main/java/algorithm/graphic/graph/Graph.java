@@ -21,4 +21,13 @@ public interface Graph {
      * @return
      */
     boolean hasEdge(int v,int w);
+
+    /**
+     * 删除一条边
+     * @param v
+     * @param w
+     */
+    void removeEdge(int v,int w);
+
+    void addEdge(int v,int w,int weight);
 }
