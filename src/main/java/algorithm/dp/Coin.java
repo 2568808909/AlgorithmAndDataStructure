@@ -48,7 +48,7 @@ public class Coin {
         }
     }
 
-
+// 这样只能计算最少哦需要几个硬币，无法倒回去搜索各个硬币的使用情况
 //    public static void main(String[] args) {
 //        Scanner scanner = new Scanner(System.in);
 //        int[] v = {0, 1, 4, 5};
